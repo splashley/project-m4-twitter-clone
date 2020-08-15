@@ -1,7 +1,15 @@
+// Libraries
 import React from "react";
-import { BrowserRouter as Switch, Router } from "react-router-dom";
-
-// routes
+import { BrowserRouter as Link, Switch, Route, Router } from "react-router-dom";
+// Hooks
+// Components
+import SideBar from "./Sidebar";
+import Homefeed from "./Homefeed";
+import Notifications from "./Notifications";
+import Bookmarks from "./Bookmarks";
+import TweetDetails from "./TweetDetails";
+import Profile from "./Profile";
+// Styles
 
 const App = () => {
   return (
@@ -9,7 +17,7 @@ const App = () => {
       <div>Hello world</div>
       <Switch>
         <Route path="/">
-          <Home />
+          <Homefeed />
         </Route>
         <Route path="/notifications">
           <Notifications />
@@ -18,10 +26,10 @@ const App = () => {
           <Bookmarks />
         </Route>
         <Route path="/tweet/:tweetId">
-          <TweetRoute />
+          <TweetDetails />
         </Route>
         <Route path="/:profileId">
-          <ProfileID />
+          <Profile />
         </Route>
       </Switch>
     </Router>
