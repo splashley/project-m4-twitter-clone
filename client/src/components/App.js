@@ -1,22 +1,27 @@
 // Libraries
 import React from "react";
-import { BrowserRouter as Link, Switch, Route, Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 // Hooks
+
 // Components
-import SideBar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import Homefeed from "./Homefeed";
 import Notifications from "./Notifications";
 import Bookmarks from "./Bookmarks";
 import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
+
 // Styles
+import GlobalStyles from "./GlobalStyles";
 
 const App = () => {
   return (
     <Router>
-      <div>Hello world</div>
+      <GlobalStyles />
+      <Sidebar></Sidebar>
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Homefeed />
         </Route>
         <Route path="/notifications">
