@@ -45,6 +45,8 @@ const Sidebar = () => {
 };
 
 const Div = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 25px;
   width: 25%;
   border: solid 1px grey;

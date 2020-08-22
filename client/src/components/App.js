@@ -1,6 +1,6 @@
 // Libraries
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Hooks
 
@@ -14,30 +14,33 @@ import Profile from "./Profile";
 
 // Styles
 import GlobalStyles from "./GlobalStyles";
+import AppStyles from "./App";
 
 const App = () => {
   return (
-    <Router>
+    <div className="App" style={{ display: "flex" }}>
       <GlobalStyles />
-      <Sidebar></Sidebar>
-      <Switch>
-        <Route exact path="/">
-          <Homefeed />
-        </Route>
-        <Route path="/notifications">
-          <Notifications />
-        </Route>
-        <Route path="/bookmarks">
-          <Bookmarks />
-        </Route>
-        <Route path="/tweet/:tweetId">
-          <TweetDetails />
-        </Route>
-        <Route path="/:profileId">
-          <Profile />
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <Sidebar></Sidebar>
+        <Switch>
+          <Route exact path="/">
+            <Homefeed />
+          </Route>
+          <Route exact path="/notifications">
+            <Notifications />
+          </Route>
+          <Route exact path="/bookmarks">
+            <Bookmarks />
+          </Route>
+          <Route exact path="/tweet/:tweetId">
+            <TweetDetails />
+          </Route>
+          <Route exact path="/:profileId">
+            <Profile />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 };
 
