@@ -1,8 +1,7 @@
 // Libraries
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-// Hooks
+import { CurrentUserContext } from "./CurrentUserContext";
 
 // Components
 import Sidebar from "./Sidebar";
@@ -13,15 +12,17 @@ import TweetDetails from "./TweetDetails";
 import Profile from "./Profile";
 
 // Styles
+import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import AppStyles from "./App";
 
 const App = () => {
+  const { currentUser, status } = useContext(CurrentUserContext);
+
   return (
-    <div className="App" style={{ display: "flex" }}>
+    <Div>
       <GlobalStyles />
       <Router>
-        <Sidebar></Sidebar>
+        <Sidebar />
         <Switch>
           <Route exact path="/">
             <Homefeed />
@@ -40,8 +41,14 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </Div>
   );
 };
+
+// Styles
+const Div = styled.div`
+  display: flex;
+  margin: 0 10% 0 10%;
+`;
 
 export default App;

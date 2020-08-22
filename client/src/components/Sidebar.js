@@ -14,27 +14,27 @@ const Sidebar = () => {
         </Li>
         <Li>
           <FiHome />
-          <Link>
-            <a href="url">Home</a>
-          </Link>
+          <A>
+            <a href="/">Home</a>
+          </A>
         </Li>
         <Li>
           <BsPerson />
-          <Link>
-            <a href="url">Profile</a>
-          </Link>
+          <A>
+            <a href="/:profileId">Profile</a>
+          </A>
         </Li>
         <Li>
           <AiOutlineBell />
-          <Link>
-            <a href="url">Notifications</a>
-          </Link>
+          <A>
+            <a href="/notifications">Notifications</a>
+          </A>
         </Li>
         <Li>
           <BsBookmark />
-          <Link>
-            <a href="url">Bookmarks</a>
-          </Link>
+          <A>
+            <a href="/bookmarks">Bookmarks</a>
+          </A>
         </Li>
         <Li>
           <MeowButton>Meow</MeowButton>
@@ -64,7 +64,7 @@ const Li = styled.li`
   padding: 10px;
 `;
 
-const Link = styled.a`
+const A = styled.a`
   font-weight: bold;
   color: black;
   padding-left: 15px;
@@ -76,7 +76,7 @@ const MeowButton = styled.button`
   color: white;
   text-align: white;
   border-radius: 25px;
-  width: 100%;
+  width: 50%;
 `;
 
 export default Sidebar;

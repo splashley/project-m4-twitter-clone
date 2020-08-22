@@ -3,14 +3,14 @@ import styled from "styled-components";
 
 // Components
 import HomeBar from "./HomeBar";
-import TextAreaForCreatingTweets from "./TextAreaForCreatingTweets";
+import TextAreaTweetCreation from "./TextAreaTweetCreation";
 import TweetDetails from "./TweetDetails";
 
 const Homefeed = () => {
   return (
     <Div>
       <HomeBar />
-      <TextAreaForCreatingTweets />
+      <TextAreaTweetCreation />
       <TweetDetails />
     </Div>
   );
