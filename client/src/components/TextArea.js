@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
-import CurrentUserContext from "./CurrentUserContext";
+import LoadingSign from "./LoadingSign";
+import { CurrentUserContext } from "./CurrentUserContext";
 
-const TextAreaTweetCreation = () => {
+const TextArea = () => {
   const [currentTweet, setCurrentTweet] = useState("");
-  const [currentUser, setCurrentUser] = React.useState(null);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const maxChar = 280;
   const maxCharErrorMessage = "You've reached the limit of 280 characters.";
@@ -26,11 +27,13 @@ const TextAreaTweetCreation = () => {
       .catch(console.error);
   };
 
-  return (
+  return !currentUser ? (
+    <LoadingSign />
+  ) : (
     <Div>
       <Avatar src={currentUser.profile.avatarSrc} />
       <Form>
-        <TextArea
+        <TextAreaBox
           placeholder="What's happening?"
           name="status"
           type="text"
@@ -60,7 +63,7 @@ const Form = styled.form`
   height: 300px;
 `;
 
-const TextArea = styled.textarea`
+const TextAreaBox = styled.textarea`
   width: 100%;
   height: 70px;
   border: none;
@@ -91,4 +94,4 @@ const TweetSubmitButton = styled.button`
   width: 100px;
 `;
 
-export default TextAreaTweetCreation;
+export default TextArea;

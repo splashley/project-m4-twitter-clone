@@ -1,23 +1,23 @@
 import React from "react";
 
-export const CurrentUserContext = React.createContext();
+export const CurrentUserContext = React.createContext(null);
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState(null);
-  const [status, setStatus] = React.useState(true);
+  const [status, setStatus] = React.useState("loading");
 
   React.useEffect(() => {
-    fetch("http://localhost:31415/api/me/profile", { method: "GET" })
+    fetch("/api/me/profile", { method: "GET" })
       .then((response) => response.json())
       .then((data) => {
-        setCurrentUser(data);
+        console.log("User being set as" + data);
         setStatus("idle");
+        setCurrentUser(data);
       })
-
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, [status]);
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, status }}>
@@ -25,5 +25,3 @@ export const CurrentUserProvider = ({ children }) => {
     </CurrentUserContext.Provider>
   );
 };
-
-export default CurrentUserContext;

@@ -1,23 +1,22 @@
 // Libraries
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { CurrentUserContext } from "./CurrentUserContext";
 
 // Components
-import Sidebar from "./Sidebar";
-import Homefeed from "./Homefeed";
-import Notifications from "./Notifications";
-import Bookmarks from "./Bookmarks";
-import TweetDetails from "./TweetDetails";
-import Profile from "./Profile";
+import Sidebar from "./components/Sidebar";
+import Homefeed from "./components/Homefeed";
+import Notifications from "./components/Notifications";
+import Bookmarks from "./components/Bookmarks";
+import TweetDetails from "./components/TweetDetails";
+import Profile from "./components/Profile";
+import { CurrentUserContext } from "./components/CurrentUserContext";
 
 // Styles
 import styled from "styled-components";
-import GlobalStyles from "./GlobalStyles";
+import GlobalStyles from "./components/GlobalStyles";
 
 const App = () => {
   const { currentUser, status } = useContext(CurrentUserContext);
-
   return (
     <Div>
       <GlobalStyles />
@@ -25,7 +24,7 @@ const App = () => {
         <Sidebar />
         <Switch>
           <Route exact path="/">
-            <Homefeed />
+            <Homefeed currentUser={currentUser} />
           </Route>
           <Route exact path="/notifications">
             <Notifications />
