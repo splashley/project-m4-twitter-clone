@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import { BsPerson, BsBookmark } from "react-icons/bs";
 import { AiOutlineBell } from "react-icons/ai";
 import LogoSrc from "../logo.svg";
 import { CurrentUserContext } from "./CurrentUserContext";
+import Spinner from "./Spinner";
 
 const Sidebar = () => {
   const { currentUser } = React.useContext(CurrentUserContext);
-  return (
+  return !currentUser ? (
+    <Spinner />
+  ) : (
     <Div>
       <UL>
         <Li>
@@ -16,27 +20,27 @@ const Sidebar = () => {
         </Li>
         <Li>
           <FiHome />
-          <NavLink exact to="/">
+          <NavBarLink exact to="/">
             Home
-          </NavLink>
+          </NavBarLink>
         </Li>
         <Li>
           <BsPerson />
-          <NavLink exact to={"/" + currentUser.profile.handle}>
+          <NavBarLink exact to={"/" + currentUser.profile.handle}>
             Profile
-          </NavLink>
+          </NavBarLink>
         </Li>
         <Li>
           <AiOutlineBell />
-          <NavLink exact to="/notifications">
+          <NavBarLink exact to="/notifications">
             Notifications
-          </NavLink>
+          </NavBarLink>
         </Li>
         <Li>
           <BsBookmark />
-          <NavLink exact to="/bookmarks">
+          <NavBarLink exact to="/bookmarks">
             Bookmarks
-          </NavLink>
+          </NavBarLink>
         </Li>
         <Li>
           <MeowButton>Meow</MeowButton>
@@ -66,7 +70,7 @@ const Li = styled.li`
   padding: 10px;
 `;
 
-const NavLink = styled.a`
+const NavBarLink = styled(NavLink)`
   font-weight: bold;
   color: black;
   padding-left: 15px;
