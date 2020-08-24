@@ -4,8 +4,10 @@ import { FiHome } from "react-icons/fi";
 import { BsPerson, BsBookmark } from "react-icons/bs";
 import { AiOutlineBell } from "react-icons/ai";
 import LogoSrc from "../logo.svg";
+import { CurrentUserContext } from "./CurrentUserContext";
 
 const Sidebar = () => {
+  const { currentUser } = React.useContext(CurrentUserContext);
   return (
     <Div>
       <UL>
@@ -14,27 +16,27 @@ const Sidebar = () => {
         </Li>
         <Li>
           <FiHome />
-          <A>
-            <a href="/">Home</a>
-          </A>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
         </Li>
         <Li>
           <BsPerson />
-          <A>
-            <a href="/:profileId">Profile</a>
-          </A>
+          <NavLink exact to={"/" + currentUser.profile.handle}>
+            Profile
+          </NavLink>
         </Li>
         <Li>
           <AiOutlineBell />
-          <A>
-            <a href="/notifications">Notifications</a>
-          </A>
+          <NavLink exact to="/notifications">
+            Notifications
+          </NavLink>
         </Li>
         <Li>
           <BsBookmark />
-          <A>
-            <a href="/bookmarks">Bookmarks</a>
-          </A>
+          <NavLink exact to="/bookmarks">
+            Bookmarks
+          </NavLink>
         </Li>
         <Li>
           <MeowButton>Meow</MeowButton>
@@ -64,7 +66,7 @@ const Li = styled.li`
   padding: 10px;
 `;
 
-const A = styled.a`
+const NavLink = styled.a`
   font-weight: bold;
   color: black;
   padding-left: 15px;
