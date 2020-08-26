@@ -1,12 +1,19 @@
+// Libraries
 import React from "react";
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import { BsPerson, BsBookmark } from "react-icons/bs";
 import { AiOutlineBell } from "react-icons/ai";
-import LogoSrc from "../logo.svg";
 import { CurrentUserContext } from "./CurrentUserContext";
+
+// Assets
+import LogoSrc from "../logo.svg";
+
+// Components
 import Spinner from "./Spinner";
+
+// Styles
+import styled from "styled-components";
 
 const Sidebar = () => {
   const { currentUser } = React.useContext(CurrentUserContext);
@@ -54,8 +61,7 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   padding: 25px;
-  width: 25%;
-  border: solid 1px grey;
+  width: 30%;
 `;
 
 const Logo = styled.img`
