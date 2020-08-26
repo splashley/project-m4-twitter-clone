@@ -1,18 +1,17 @@
 // Libraries
-import React, { useState, useContext } from "react";
-import { CurrentUserContext } from "./CurrentUserContext";
+import React from "react";
 import { useHistory } from "react-router";
 
 // Components
 import Tweet from "./Tweet";
-import TextArea from "./TextArea";
+import PostTweet from "./PostTweet";
 import HomeBar from "./HomeBar";
 import Spinner from "./Spinner";
 
 // Styles
 import styled from "styled-components";
 
-const HomeFeed = ({ setPageTitle }) => {
+const HomeFeed = () => {
   const [tweets, setTweets] = React.useState(null);
   const history = useHistory();
 
@@ -26,7 +25,7 @@ const HomeFeed = ({ setPageTitle }) => {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error("Something went wrong");
+          history.push("/error");
         }
       })
       .then((data) => {
@@ -44,7 +43,7 @@ const HomeFeed = ({ setPageTitle }) => {
   ) : (
     <Div>
       <HomeBar />
-      <TextArea postTweet={postTweet} />
+      <PostTweet postTweet={postTweet} />
       <TweetFeed>
         {" "}
         {tweets.tweetIds.map((tweetId) => {
