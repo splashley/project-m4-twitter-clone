@@ -10,7 +10,6 @@ export const CurrentUserProvider = ({ children }) => {
     fetch("/api/me/profile", { method: "GET" })
       .then((response) => response.json())
       .then((data) => {
-        console.log("User being set as" + data);
         setStatus("idle");
         setCurrentUser(data);
       })
